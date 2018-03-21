@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+const int size = 3;
+
+class String {
+private:
+    string s;
+public:
+    String(string s) {
+        this->s = s;
+    }
+
+    friend ostream &operator<<(ostream &stream, String &item) {
+        return stream << item.s;
+    }
+
+};
+
+
+void create() {
+    class Array : public String {
+    public:
+        Array() : String("test string") {}
+    };
+
+    Array array[size];
+
+    for (int i = 0; i < size; ++i) {
+        cout << array[i] << " ";
+    }
+}
+
+int main() {
+    create();
+    return 0;
+}

@@ -1,0 +1,38 @@
+#include <iostream>
+
+using namespace std;
+
+class Num {
+private:
+    int n;
+public:
+    Num(int n) {
+        this->n = n;
+    }
+
+    void operator+(int x) {
+        n += x;
+    }
+
+    void operator-(int x) {
+        n -= x;
+    }
+
+    void operator*(int x) {
+        n *= x;
+    }
+
+    int getNum() {
+        return n;
+    }
+};
+
+
+int main() {
+    Num N(0);
+    N + 1;
+    N * 5;
+    N - 1;
+    cout << N.getNum() << endl;
+    return 0;
+}

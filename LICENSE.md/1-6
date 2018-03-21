@@ -1,0 +1,76 @@
+#include <iostream>
+
+using namespace std;
+
+class Cats {
+private:
+    double age, weight, length, growth;
+    static int counter;
+
+    friend void setData(Cats &, double, double, double, double);
+
+public:
+    Cats() {
+        age = 1;
+        weight = 2.5;
+        length = 0.5;
+        growth = 0.22;
+        counter++;
+    }
+
+    Cats(double age, double weight, double length, double growth) {
+        this->age = age;
+        this->weight = weight;
+        this->length = length;
+        this->growth = growth;
+        counter++;
+
+    }
+
+    Cats(const Cats &C) {
+        age = C.age;
+        weight = C.weight;
+        length = C.length;
+        growth = C.growth;
+        counter++;
+    }
+
+    ~Cats() {
+        counter--;
+    }
+
+    void getInfo() {
+        cout << "Р’РѕР·СЂР°СЃС‚" << "\t\t" << "Р’РµСЃ" << "\t\t" << "Р”Р»РёРЅР°" << "\t\t" << "Р РѕСЃС‚" << endl;
+        cout << age << "\t\t\t" << weight << "\t\t" << length << "\t\t\t" << growth << endl;
+    }
+
+    void say() {
+        cout << "РњСЏСѓ-РјСЏСѓ-РјСЏСѓ" << endl;
+    }
+
+    static int getCounter() {
+        return counter;
+    }
+
+};
+
+int Cats::counter = 0;
+
+void setData(Cats &C, double a, double w, double l, double g) {
+    C.age = a;
+    C.weight = w;
+    C.length = l;
+    C.growth = g;
+}
+
+int main() {
+    Cats Barsik;
+    Cats Pushok(1, 2, 3, 4);
+    Cats Cotik(Barsik);
+
+    setData(Pushok, 2, 3.4, 0.7, 0.4);
+    Barsik.say();
+    Pushok.getInfo();
+    cout << "РљРѕР»-РІРѕ РєРѕС‚РѕРІ: " << Cotik.getCounter() << endl;
+    return 0;
+}

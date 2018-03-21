@@ -1,0 +1,31 @@
+#include <iostream>
+
+using namespace std;
+
+class Animal {
+protected:
+    string name;
+    int age;
+public:
+    void set(string name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+
+    virtual void getInfo() = 0;
+};
+
+class Cat : public Animal {
+public:
+    void getInfo() {
+        cout << name << " " << age << endl;
+    }
+};
+
+int main() {
+    Cat cat;
+
+    cat.set("Barsik", 3);
+    cat.getInfo();
+    return 0;
+}

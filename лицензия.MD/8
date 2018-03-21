@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+class Animal {
+private:
+    double age, weight;
+public:
+    Animal(double a, double w) : age(a), weight(w) {}
+
+    void getAge() {
+        cout << age << endl;
+    }
+
+    void getWeight() {
+        cout << weight << endl;
+    }
+};
+
+
+class Dog : virtual public Animal {
+private:
+    double length;
+public:
+    Dog(double a, double w, double l) : Animal(a, w), length(l) {}
+
+    void getLength() {
+        cout << length << endl;
+    }
+};
+
+
+class Cat : virtual public Animal, virtual public Dog {
+private:
+    double growth;
+public:
+    Cat(double a, double w, double l, double g) : Animal(a, w), Dog(a, w, l), growth(g) {}
+
+    void getGrowth() {
+        cout << growth << endl;
+    }
+};
+
+
+int main() {
+    Cat Barsik(1, 2, 3, 4);
+
+    Barsik.getAge();
+    Barsik.getWeight();
+    Barsik.getLength();
+    Barsik.getGrowth();
+    return 0;
+}
